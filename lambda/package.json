@@ -1,0 +1,22 @@
+{
+  "name": "kao-the-third",
+  "version": "1.0.0",
+  "description": "Serverless Discord.js bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maaxodell/kao-III.git"
+  },
+  "author": "Max O'Dell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maaxodell/kao-III/issues"
+  },
+  "homepage": "https://github.com/maaxodell/kao-III#readme",
+  "dependencies": {
+    "tweetnacl": "^1.0.3"
+  }
+}
