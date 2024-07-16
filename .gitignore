@@ -1,3 +1,6 @@
 # Terraform.
 **/.terraform/*
 *.tfstate*
+
+# Build artifacts.
+/bin/*
