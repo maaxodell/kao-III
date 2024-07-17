@@ -30,12 +30,23 @@ resource "aws_iam_role" "lambda_iam_role" {
 }
 
 // Zip the lambda function's entire directory.
-// TODO: Move to using S3 Bucket instead of zip archive approach.
 data "archive_file" "lambda-main" {
   type = "zip"
 
   source_dir  = "${path.module}/../src/lambda/main"
   output_path = "${path.module}/../bin/lambda-main.zip"
+}
+
+// Create an S3 Bucket for lambda function archives to be stored in.
+// TODO: Versioning
+resource "aws_s3_bucket" "lambda-bucket" {
+}
+
+// Upload the Lambda function archive to S3.
+resource "aws_s3_object" "lambda-main-zip" {
+  bucket = aws_s3_bucket.lambda-bucket.id
+  key    = "lambda-main"
+  source = data.archive_file.lambda-main.output_path
 }
 
 // Load in Discord API Public Key using ASM.
@@ -46,11 +57,13 @@ data "aws_secretsmanager_secret_version" "current" {
   secret_id = data.aws_secretsmanager_secret.discord-api-public-key.id
 }
 
-// Create Lambda function from zip archive.
+// Create Lambda function from our S3 object.
 resource "aws_lambda_function" "main" {
   function_name = "main"
-  filename      = "${path.module}/../bin/lambda-main.zip"
   role          = aws_iam_role.lambda_iam_role.arn
+
+  s3_bucket = aws_s3_bucket.lambda-bucket.id
+  s3_key    = aws_s3_object.lambda-main-zip.key
 
   source_code_hash = data.archive_file.lambda-main.output_base64sha256
 
