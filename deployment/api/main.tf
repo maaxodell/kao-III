@@ -19,7 +19,7 @@ resource "aws_api_gateway_method" "proxy" {
 }
 
 // Create Lambda integration, pointing it to both the proxy method and the Lambda function.
-resource "aws_api_gateway_integration" "main-lambda-integration" {
+resource "aws_api_gateway_integration" "main_lambda_integration" {
   rest_api_id = aws_api_gateway_rest_api.main.id
   resource_id = aws_api_gateway_method.proxy.resource_id
   http_method = aws_api_gateway_method.proxy.http_method
@@ -30,9 +30,9 @@ resource "aws_api_gateway_integration" "main-lambda-integration" {
 }
 
 // Create deployment resource.
-resource "aws_api_gateway_deployment" "api-deployment" {
+resource "aws_api_gateway_deployment" "api_deployment" {
   depends_on = [
-    aws_api_gateway_integration.main-lambda-integration
+    aws_api_gateway_integration.main_lambda_integration
   ]
 
   rest_api_id = aws_api_gateway_rest_api.main.id
@@ -40,7 +40,7 @@ resource "aws_api_gateway_deployment" "api-deployment" {
 }
 
 // Grant the API Permission to interact with the Lambda function.
-resource "aws_lambda_permission" "api-to-lambda-permission" {
+resource "aws_lambda_permission" "api_to_lambda_permission" {
   statement_id  = "AllowAPIGatewayInvoke"
   action        = "lambda:InvokeFunction"
   function_name = var.lambda_function_name
@@ -51,5 +51,5 @@ resource "aws_lambda_permission" "api-to-lambda-permission" {
 
 // Output the API URL after creation.
 output "api_url" {
-  value = aws_api_gateway_deployment.api-deployment.invoke_url
+  value = aws_api_gateway_deployment.api_deployment.invoke_url
 }
