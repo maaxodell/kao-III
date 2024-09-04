@@ -1,5 +1,3 @@
-// TODO: Convert to TypeScript.
-
 // Imports.
 import "dotenv/config";
 import express from "express";
@@ -13,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 /**
  * Main entry point for Discord's API.
  */
-app.post("/interactions", verifyKeyMiddleware(process.env.PUBLIC_KEY), async function (req, res) {
+app.post("/interactions", verifyKeyMiddleware(process.env.PUBLIC_KEY as string), async function (req, res) {
     const { type, data } = req.body;
 
     // Handle Discord verification requests.

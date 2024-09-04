@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "My Discord bot, hosted on AWS",
   "main": "app.js",
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,5 +20,9 @@
     "discord-interactions": "^4.1.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "typescript": "^5.5.4"
   }
 }
