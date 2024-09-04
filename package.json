@@ -1,0 +1,19 @@
+{
+  "name": "kao-iii",
+  "version": "1.0.0",
+  "description": "My Discord bot, hosted on AWS",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maaxodell/kao-III.git"
+  },
+  "author": "Max O'Dell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maaxodell/kao-III/issues"
+  },
+  "homepage": "https://github.com/maaxodell/kao-III#readme"
+}
