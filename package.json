@@ -1,0 +1,28 @@
+{
+  "name": "kao-iii",
+  "version": "1.0.0",
+  "description": "My Discord bot, hosted on AWS",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maaxodell/kao-III.git"
+  },
+  "author": "Max O'Dell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maaxodell/kao-III/issues"
+  },
+  "homepage": "https://github.com/maaxodell/kao-III#readme",
+  "dependencies": {
+    "discord-interactions": "^4.1.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "typescript": "^5.5.4"
+  }
+}
